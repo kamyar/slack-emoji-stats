@@ -24,16 +24,18 @@ def get_metric(**kwargs):
                 resources=[
                     MetricResource(
                         type=key,
-                        name=value,
-                    ) for key, value in kwargs.items()
+                        name=str(value),
+                    )
+                    for key, value in kwargs.items()
                 ],
             ),
         ],
     )
+
 
 def publish_emoji_metric(**kwargs):
     configuration = Configuration()
     with ApiClient(configuration) as api_client:
         api_instance = MetricsApi(api_client)
         response = api_instance.submit_metrics(body=get_metric(**kwargs))
-        print(response)
+        # print(response)
