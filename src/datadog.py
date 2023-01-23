@@ -38,4 +38,3 @@ def publish_emoji_metric(**kwargs):
     with ApiClient(configuration) as api_client:
         api_instance = MetricsApi(api_client)
         response = api_instance.submit_metrics(body=get_metric(**kwargs))
-        # print(response)

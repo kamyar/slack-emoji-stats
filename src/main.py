@@ -2,7 +2,7 @@ import json
 import logging
 import os
 import sys
-from pprint import pprint
+# from pprint import pprint
 
 import aiohttp
 from fastapi import FastAPI, Request
@@ -37,8 +37,8 @@ async def get_user_from_id(user_id: str):
         ) as resp:
             if resp.status == 200:
                 resp_json = await resp.json()
-                print(resp_json)
-                return resp_json["profile"]["display_name"]
+                logger.info(resp_json)
+                return resp_json["profile"]["real_name"]
             else:
                 return "user_fetch_error"
 
